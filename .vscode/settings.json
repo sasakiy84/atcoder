@@ -1,11 +1,14 @@
 {
     "rust-analyzer.linkedProjects": [
+        "abc311c/Cargo.toml",
+        "abc311b/Cargo.toml",
+        "abc311a/Cargo.toml",
         "abc310a/Cargo.toml",
         "abc309a/Cargo.toml",
         "abc308a/Cargo.toml",
         "abc307a/Cargo.toml",
         "abc306a/Cargo.toml",
         "abc305a/Cargo.toml",
-        "abc304a/Cargo.toml",
+        "abc304a/Cargo.toml"
     ]
 }

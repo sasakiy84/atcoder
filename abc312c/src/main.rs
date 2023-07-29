@@ -1,7 +1,5 @@
 // -*- coding:utf-8-unix -*-
 
-// 解けてない
-
 use proconio::input;
 
 // ABC086C - Traveling
@@ -14,27 +12,24 @@ fn main() {
         mut seller: [i64; n],  // Vec<(i32, i32, i32)>
         mut buyer: [i64; m],  // Vec<(i32, i32, i32)>
     }
-    let mut seller: Vec<i64> = seller;
-    let mut buyer: Vec<i64> = buyer;
+    let seller: Vec<i64> = seller;
+    let buyer: Vec<i64> = buyer;
 
-    seller.sort();
-    buyer.sort();
+    let mut tail = 0;
+    let mut head = 1 * 10_i64.pow(9) + 1;
 
-    let mut solved = false;
+    while tail + 1 < head {
+        let x = (tail + head) / 2;
 
-    for (i, sell_price) in seller.iter().enumerate() {
-        if m - i < 2 {
-            break;
-        }
-        let ok = &buyer[(m - i - 2)] >= sell_price;
-        if ok {
-            println!("{}", sell_price);
-            solved = true;
-            break;
+        let buyer_count = buyer.iter().filter(|price| &&x <= price).count();
+        let seller_count = seller.iter().filter(|price| &&x >= price).count();
+
+        if seller_count >= buyer_count {
+            head = x;
+        } else {
+            tail = x;
         }
     }
 
-    if solved == false {
-        println!("{}", buyer.last().unwrap() + 1)
-    }
+    println!("{}", head)
 }
